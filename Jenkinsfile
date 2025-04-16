@@ -18,16 +18,12 @@ pipeline {
         stage('Restart Node.js Server') {
             steps {
                 bat 'taskkill /F /IM node.exe || echo Node not running'
-                bat 'start  cmd /c "node index.js"'
+                bat bat 'start "" cmd /c "node index.js" & exit 0'
             }
         }
 
 
 
-        // stage('Deploy') {
-        //     steps {
-        //         echo 'Deploying... (pretend)'
-        //     }
-        // }
+        
     }
 }
