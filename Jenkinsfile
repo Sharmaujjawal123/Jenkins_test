@@ -17,8 +17,9 @@ pipeline {
 
         stage('Restart Node.js Server') {
             steps {
-                bat 'taskkill /F /IM node.exe || echo Node not running'
-                 bat 'start "" cmd /k "node index.js" & exit 0'
+               bat 'pm2 delete all || echo No process'
+              bat 'pm2 start index.js'
+
             }
         }
 
