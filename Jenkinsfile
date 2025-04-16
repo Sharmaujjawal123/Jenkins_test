@@ -2,29 +2,32 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone Repo') {
+        stage('pull code from github') {
             steps {
-                echo 'Repo Cloned Successfully!'
+                git 'https://github.com/Sharmaujjawal123/Jenkins_test.git'
             }
         }
 
-        stage('Build') {
+        stage('Install dependency') {
             steps {
-                echo 'Building the project...'
-                bat 'dir' // For Windows
+                
+                bat 'npm install'
             }
         }
 
-        stage('Test') {
+        stage('Restart Node.js Server') {
             steps {
-                echo 'Running tests... (pretend)'
+                bat 'taskkill /F /IM node.exe || echo Node not running'
+                bat 'start  cmd /c "node index.js"'
             }
         }
 
-        stage('Deploy') {
-            steps {
-                echo 'Deploying... (pretend)'
-            }
-        }
+
+
+        // stage('Deploy') {
+        //     steps {
+        //         echo 'Deploying... (pretend)'
+        //     }
+        // }
     }
 }
