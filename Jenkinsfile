@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('pull code from github') {
             steps {
-                git 'https://github.com/Sharmaujjawal123/Jenkins_test.git'
+                git url 'https://github.com/Sharmaujjawal123/Jenkins_test.git', branch:'main'
             }
         }
 
