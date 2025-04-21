@@ -29,6 +29,7 @@
 // compose command
 pipeline {
     agent any
+    stages{
 stage('Run App with Docker Compose') {
     steps {
         bat '''
@@ -36,5 +37,6 @@ stage('Run App with Docker Compose') {
             docker-compose up -d --build
         '''
     }
+}
 }
 }
