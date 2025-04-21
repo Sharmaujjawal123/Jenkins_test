@@ -2,29 +2,25 @@ pipeline {
     agent any
 
     stages {
-        stage('pull code from github') {
+        stage('Checkout') {
             steps {
-                git branch: 'main', url:'https://github.com/Sharmaujjawal123/Jenkins_test.git'
+                git branch: 'main', url: 'https://github.com/Sharmaujjawal123/Jenkins_test.git'
             }
         }
 
-        stage('Install dependency') {
+        stage('Build Docker Image') {
             steps {
-                
-                bat 'npm install'
+                bat 'docker build -t my-node-app .'
             }
         }
 
-        stage('Restart Node.js Server') {
+        stage('Run Docker Container') {
             steps {
-               bat 'pm2 delete all || echo No process'
-              bat 'pm2 start index.js'
-
+     bat '''
+            docker rm -f my-con_jen || echo "Container not found"
+            docker run -d --name my-con_jen -p 3000:3000 my-node-image
+        '''
             }
         }
-
-
-
-        
     }
 }
