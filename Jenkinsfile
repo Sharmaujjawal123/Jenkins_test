@@ -1,5 +1,5 @@
-pipeline {
-    agent any
+// pipeline {
+//     agent any
 
 //     stages {
 //         stage('Checkout') {
@@ -27,6 +27,8 @@ pipeline {
 
 
 // compose command
+pipeline {
+    agent any
 stage('Run App with Docker Compose') {
     steps {
         bat '''
