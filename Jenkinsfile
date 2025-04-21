@@ -1,5 +1,5 @@
-// pipeline {
-//     agent any
+pipeline {
+    agent any
 
 //     stages {
 //         stage('Checkout') {
@@ -34,4 +34,5 @@ stage('Run App with Docker Compose') {
             docker-compose up -d --build
         '''
     }
+}
 }
