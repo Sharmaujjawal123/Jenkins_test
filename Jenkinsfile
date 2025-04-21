@@ -17,7 +17,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
      bat '''
-            docker rm -f my_con_jen || echo "Container not found"
+            docker rm -f my_con_jen || echo Container not found
             docker run -d --name my_con_jen -p 82:82 jenkins_test
         '''
             }
